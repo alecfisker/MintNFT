@@ -31,7 +31,7 @@ const Landing = () => {
   }, []);
 
   const fetchAllNecessaryValues  = async () => {   
-    if (globalAccount) {   
+    if (true) {   
       let promiseArr = [];
       promiseArr.push(getSoldTotal(globalWeb3));
       promiseArr.push(getPublicSalePrice(globalWeb3));
