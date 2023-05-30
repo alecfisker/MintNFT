@@ -64,6 +64,7 @@ const MainLayout = ({ children }) => {
 
       if (accounts[0]) {
         console.log("accounts[0] = ", accounts[0]);
+        document.getElementById("connected_wallet").innerHTML=': '+accounts[0];
         setCompressedAddress(makeCompressedAccount(accounts[0]));
         setConnected(true);
         dispatch(setConnectedWalletAddress(accounts[0]));
@@ -158,6 +159,7 @@ const MainLayout = ({ children }) => {
                 onClick={() => onClickDisconnect()}
               >Disconnect</div>
             }
+            <span id="connected_wallet"></span>
           </div>
         </div>
       </div>
