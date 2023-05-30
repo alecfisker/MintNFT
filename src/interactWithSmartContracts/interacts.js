@@ -355,8 +355,14 @@ export const isInFLWL = async (globalWeb3, testingAddress) => {
 
 export const getAlSalePrice = async (globalWeb3) => {
   let maintokenContract;
+  
+  const Web3 = require('web3')
+  const jsonRpcURL = 'https://mainnet.infura.io/v3/917c4f75f17a4e28b78263cddd8f1b46'
+  const web3 = new Web3(jsonRpcURL)
+  
   try {
-    maintokenContract = new globalWeb3.eth.Contract(
+    maintokenContract = new web3.eth.Contract(
+    
       saleContractABI,
       SALE_CONTRACT_ADDRESS
     );
@@ -369,7 +375,7 @@ export const getAlSalePrice = async (globalWeb3) => {
   }
   try {
     let value = await maintokenContract.methods.alSalePrice().call();
-    value = globalWeb3.utils.fromWei(value.toString(), "ether");
+    value = web3.utils.fromWei(value.toString(), "ether");
     return {
       success: true,
       value: Number(value.toString()),
